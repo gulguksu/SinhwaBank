@@ -38,10 +38,6 @@ export default async function DashboardPage() {
           <p className="amount">
             {globalState.globalTax.toLocaleString("ko-KR")}원
           </p>
-          <p className="section-desc">
-            모든 학생이 함께 보는 금액입니다. 여기에서 금액을 변경하면 모든
-            학생에게 동시에 적용됩니다.
-          </p>
           <form action={setGlobalTaxAction} className="form-inline">
             <label className="form-label-inline">
               금액
@@ -53,10 +49,21 @@ export default async function DashboardPage() {
                 required
               />
             </label>
+            <label className="form-label-inline">
+              내역
+              <input
+                type="text"
+                name="description"
+                placeholder="예: 세금 인상, 세금 감면 등"
+              />
+            </label>
             <button type="submit" className="btn-primary">
-              금액 변경
+              금액 및 내역 저장
             </button>
           </form>
+          <Link href="/tax-history" className="btn-secondary" >
+            내역 보기
+          </Link>
         </div>
 
         <div className="card">
@@ -121,10 +128,9 @@ export default async function DashboardPage() {
         <p className="amount">
           {globalState.globalTax.toLocaleString("ko-KR")}원
         </p>
-        <p className="section-desc">
-          우리 반 학생들이 함께 공유하는 가상의 세금 금액입니다. 관리자가
-          금액을 조정하면 모든 학생에게 똑같이 보입니다.
-        </p>
+        <Link href="/tax-history" className="btn-secondary">
+          내역 보기
+        </Link>
       </div>
       <div className="card">
         <h2 className="section-title">내 통장 잔액</h2>

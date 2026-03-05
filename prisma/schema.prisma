@@ -31,3 +31,13 @@ model GlobalState {
   globalTax Int @default(0)
 }
 
+model TaxHistory {
+  id           Int      @id @default(autoincrement())
+  amountBefore Int
+  amountAfter  Int
+  diff         Int
+  description  String
+  createdAt    DateTime @default(now())
+}
+
+

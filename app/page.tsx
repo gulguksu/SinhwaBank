@@ -79,18 +79,6 @@ export default async function LoginPage() {
         <p className="auth-helper">
           아직 계정이 없다면? <Link href="/register">회원가입</Link>
         </p>
-
-        <div className="hint-box">
-          <p className="hint-title">관리자 계정 안내</p>
-          <p className="hint-text">
-            관리자 아이디: <strong>admin</strong>, 비밀번호:{" "}
-            <strong>admin</strong>
-          </p>
-          <p className="hint-text small">
-            관리자는 우리 나라 세금 금액과 모든 학생의 통장 잔액 및 거래내역을
-            관리할 수 있습니다.
-          </p>
-        </div>
       </div>
     </section>
   );

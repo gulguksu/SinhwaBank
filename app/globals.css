@@ -273,10 +273,12 @@ select:focus {
 }
 
 .inline-form {
-  display: inline-flex;
+  display: flex;
+  flex-wrap: wrap;
   gap: 0.25rem;
   align-items: center;
   margin: 0.1rem 0;
+  max-width: 100%;
 }
 
 .form-inline {
@@ -294,6 +296,10 @@ select:focus {
   font-size: 0.85rem;
 }
 
+.edit-inline-form {
+  margin-top: 0.25rem;
+}
+
 .edit-inline-form input,
 .edit-inline-form select {
   max-width: 6rem;
@@ -302,7 +308,8 @@ select:focus {
 }
 
 .edit-inline-form input[name="description"] {
-  max-width: 10rem;
+  flex: 1 1 120px;
+  max-width: 100%;
 }
 
 a.btn-primary,
