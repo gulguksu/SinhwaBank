@@ -3,7 +3,7 @@ import type { ReactNode } from "react";
 import { getSessionUser } from "@/lib/auth";
 
 export const metadata = {
-  title: "신화초 5학년 1반 통장",
+  title: "최신국 나만의 통장",
 };
 
 export default async function RootLayout({
@@ -13,11 +13,20 @@ export default async function RootLayout({
 }) {
   const user = await getSessionUser();
 
+  let headerTitle = "최신국 나만의 통장";
+  if (user) {
+    if (user.role === "admin") {
+      headerTitle = "최신국 통장 관리";
+    } else {
+      headerTitle = `최신국 ${user.name}님의 통장`;
+    }
+  }
+
   return (
     <html lang="ko">
       <body>
         <header className="app-header">
-          <div className="logo-main">신화초 5학년 1반 통장</div>
+          <div className="logo-main">{headerTitle}</div>
           {user && (
             <div className="user-info">
               <span className="user-name">

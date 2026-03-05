@@ -245,6 +245,11 @@ select:focus {
   font-weight: 600;
 }
 
+.col-type {
+  width: 60px;
+  white-space: nowrap;
+}
+
 .text-right {
   text-align: right;
 }
@@ -319,6 +324,28 @@ select:focus {
 a.btn-primary,
 a.btn-secondary {
   margin-top: 0.5rem;
+}
+
+.pagination {
+  margin-top: 0.75rem;
+  display: flex;
+  gap: 0.25rem;
+  flex-wrap: wrap;
+}
+
+.page-link {
+  padding: 0.25rem 0.6rem;
+  border-radius: 999px;
+  border: 1px solid #d1d5db;
+  font-size: 0.8rem;
+  text-decoration: none;
+  color: #374151;
+}
+
+.page-link-active {
+  background: #2563eb;
+  border-color: #2563eb;
+  color: #fff;
 }
 
 
