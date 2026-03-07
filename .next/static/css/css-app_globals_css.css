@@ -27,6 +27,12 @@ body {
 .logo-main {
   font-weight: 700;
   font-size: 1.2rem;
+  color: inherit;
+  text-decoration: none;
+  cursor: pointer;
+}
+.logo-main:hover {
+  text-decoration: underline;
 }
 
 .user-info {
@@ -279,6 +285,34 @@ select:focus {
 .info-list strong {
   display: inline-block;
   width: 4.5rem;
+}
+
+.student-name-link {
+  color: #2563eb;
+  font-weight: 600;
+  text-decoration: none;
+}
+.student-name-link:hover {
+  text-decoration: underline;
+}
+
+.admin-actions-block {
+  margin-bottom: 1.5rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid #e5e7eb;
+}
+.admin-actions-block:last-of-type {
+  border-bottom: none;
+}
+
+.form-job .form-label-inline {
+  margin-right: 0.5rem;
+}
+
+.danger-desc {
+  color: #b91c1c;
+  font-size: 0.9rem;
+  margin-bottom: 0.75rem;
 }
 
 .inline-form {

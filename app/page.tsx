@@ -36,6 +36,7 @@ async function loginAction(formData: FormData) {
     id: user.id,
     username: user.username,
     name: user.name,
+    job: user.job ?? null,
   });
 
   redirect("/dashboard");

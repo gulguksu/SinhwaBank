@@ -2,11 +2,15 @@ import Link from "next/link";
 import { redirect } from "next/navigation";
 import { getSessionUser } from "@/lib/auth";
 import { prisma } from "@/lib/db";
+import { JOB_OPTIONS } from "@/lib/constants";
 import {
   addTransactionAction,
   deleteTransactionAction,
   editTransactionAction,
+  withdrawUserAction,
+  updateJobAction,
 } from "./txActions";
+import { WithdrawForm } from "./WithdrawForm";
 
 export default async function AdminUserPage({
   params,
@@ -61,7 +65,45 @@ export default async function AdminUserPage({
           <li>
             <strong>현재 잔액</strong> {balance.toLocaleString("ko-KR")}원
           </li>
+          <li>
+            <strong>직업</strong> {dbUser.job ?? "미부여"}
+          </li>
         </ul>
+
+        <div className="admin-actions-block">
+          <h3 className="sub-title">직업 부여</h3>
+          <form
+            action={updateJobAction.bind(null, dbUser.username)}
+            className="form-inline form-job"
+          >
+            <label className="form-label-inline">
+              직업 선택
+              <select name="job" defaultValue={dbUser.job ?? ""}>
+                <option value="">미부여</option>
+                {JOB_OPTIONS.map((job) => (
+                  <option key={job} value={job}>
+                    {job}
+                  </option>
+                ))}
+              </select>
+            </label>
+            <button type="submit" className="btn-primary">
+              직업 저장
+            </button>
+          </form>
+        </div>
+
+        <div className="admin-actions-block">
+          <h3 className="sub-title">탈퇴시키기</h3>
+          <p className="section-desc danger-desc">
+            이 학생의 계정을 삭제합니다. 삭제 후 동일한 아이디·비밀번호·이름으로
+            재가입할 수 있으며, 재가입 시 통장 잔액은 0원부터 시작합니다.
+          </p>
+          <WithdrawForm
+            username={dbUser.username}
+            action={withdrawUserAction}
+          />
+        </div>
 
         <form
           action={addTransactionAction.bind(null, dbUser.id)}

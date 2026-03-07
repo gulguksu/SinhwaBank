@@ -13,7 +13,7 @@ function getSecret() {
 
 export type SessionUser =
   | { role: "admin"; name: string }
-  | { role: "user"; id: number; username: string; name: string };
+  | { role: "user"; id: number; username: string; name: string; job?: string | null };
 
 export async function getSessionUser(): Promise<SessionUser | null> {
   const cookieStore = await cookies();
@@ -40,6 +40,7 @@ export async function getSessionUser(): Promise<SessionUser | null> {
         id: data.id,
         username: data.username,
         name: data.name,
+        job: data.job ?? null,
       };
     }
     return null;

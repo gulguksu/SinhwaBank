@@ -1,5 +1,6 @@
 import "./globals.css";
 import type { ReactNode } from "react";
+import Link from "next/link";
 import { getSessionUser } from "@/lib/auth";
 
 export const metadata = {
@@ -18,7 +19,8 @@ export default async function RootLayout({
     if (user.role === "admin") {
       headerTitle = "최신국 통장 관리";
     } else {
-      headerTitle = `최신국 ${user.name}님의 통장`;
+      const jobSuffix = user.job ? `(${user.job})` : "";
+      headerTitle = `최신국 ${user.name}님의 통장${jobSuffix}`;
     }
   }
 
@@ -26,7 +28,7 @@ export default async function RootLayout({
     <html lang="ko">
       <body>
         <header className="app-header">
-          <div className="logo-main">{headerTitle}</div>
+          <Link href="/" className="logo-main">{headerTitle}</Link>
           {user && (
             <div className="user-info">
               <span className="user-name">

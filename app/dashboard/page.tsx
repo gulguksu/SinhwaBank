@@ -67,10 +67,10 @@ export default async function DashboardPage() {
         </div>
 
         <div className="card">
-          <h2 className="section-title">학생 통장 관리</h2>
+          <h2 className="section-title">학생 관리</h2>
           <p className="section-desc">
-            각 학생의 이름을 눌러 해당 학생의 통장 잔액과 거래내역을
-            추가/삭제/수정할 수 있습니다.
+            학생 이름을 클릭하면 해당 학생의 탈퇴 처리, 직업 부여, 통장 거래내역
+            관리가 가능한 페이지로 이동합니다.
           </p>
           {withBalances.length === 0 ? (
             <p>아직 가입한 학생이 없습니다.</p>
@@ -80,6 +80,7 @@ export default async function DashboardPage() {
                 <tr>
                   <th>이름</th>
                   <th>아이디</th>
+                  <th>직업</th>
                   <th>통장 잔액</th>
                   <th>관리</th>
                 </tr>
@@ -87,8 +88,16 @@ export default async function DashboardPage() {
               <tbody>
                 {withBalances.map((u) => (
                   <tr key={u.id}>
-                    <td>{u.name}</td>
+                    <td>
+                      <Link
+                        href={`/admin/users/${u.username}`}
+                        className="student-name-link"
+                      >
+                        {u.name}
+                      </Link>
+                    </td>
                     <td>{u.username}</td>
+                    <td>{u.job ?? "—"}</td>
                     <td>{u.balance.toLocaleString("ko-KR")}원</td>
                     <td>
                       <Link
