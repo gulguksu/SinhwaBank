@@ -86,7 +86,7 @@ export async function editTransactionAction(txId: number, formData: FormData) {
   redirect(`/admin/users/${u?.username}`);
 }
 
-/** 해당 학생 계정 탈퇴 처리. 삭제 후 동일 아이디/비밀번호/이름으로 재가입 가능하며, 잔액은 0원부터 시작 */
+/** 해당 학생 계정 탈퇴 처리. 삭제 후 동일 아이디/비밀번호/이름으로 재가입 가능하며, 잔액은 0피스부터 시작 */
 export async function withdrawUserAction(username: string) {
   const session = await getSessionUser();
   if (!session || session.role !== "admin") {

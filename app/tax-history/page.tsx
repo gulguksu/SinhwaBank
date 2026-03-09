@@ -42,11 +42,11 @@ export default async function TaxHistoryPage() {
                     timeStyle: "short",
                   })}
                 </td>
-                <td>{h.amountBefore.toLocaleString("ko-KR")}원</td>
-                <td>{h.amountAfter.toLocaleString("ko-KR")}원</td>
+                <td>{h.amountBefore.toLocaleString("ko-KR")}피스</td>
+                <td>{h.amountAfter.toLocaleString("ko-KR")}피스</td>
                 <td>
                   {h.diff >= 0 ? "+" : "-"}
-                  {Math.abs(h.diff).toLocaleString("ko-KR")}원
+                  {Math.abs(h.diff).toLocaleString("ko-KR")}피스
                 </td>
                 <td>{h.description}</td>
               </tr>

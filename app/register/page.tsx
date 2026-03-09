@@ -9,9 +9,10 @@ async function registerAction(formData: FormData) {
 
   const username = (formData.get("username") || "").toString().trim();
   const password = (formData.get("password") || "").toString().trim();
+  const passwordHint = (formData.get("passwordHint") || "").toString().trim();
   const name = (formData.get("name") || "").toString().trim();
 
-  if (!username || !password || !name) {
+  if (!username || !password || !name || !passwordHint.trim()) {
     redirect("/register");
   }
 
@@ -30,7 +31,7 @@ async function registerAction(formData: FormData) {
 
   const hash = await bcrypt.hash(password, 10);
   await prisma.user.create({
-    data: { username, passwordHash: hash, name },
+    data: { username, passwordHash: hash, passwordHint, name },
   });
 
   redirect("/");
@@ -59,6 +60,14 @@ export default function RegisterPage() {
               required
               pattern="[a-z0-9]+"
               title="영어 소문자와 숫자만 사용 가능합니다."
+            />
+          </label>
+          <label className="form-label">
+            비밀번호 힌트
+            <input
+              name="passwordHint"
+              required
+              placeholder="비밀번호를 잊었을 때 보여줄 힌트"
             />
           </label>
           <label className="form-label">

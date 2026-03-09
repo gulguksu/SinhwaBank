@@ -63,7 +63,7 @@ export default async function AdminUserPage({
             <strong>아이디</strong> {dbUser.username}
           </li>
           <li>
-            <strong>현재 잔액</strong> {balance.toLocaleString("ko-KR")}원
+            <strong>현재 잔액</strong> {balance.toLocaleString("ko-KR")}피스
           </li>
           <li>
             <strong>직업</strong> {dbUser.job ?? "미부여"}
@@ -97,7 +97,7 @@ export default async function AdminUserPage({
           <h3 className="sub-title">탈퇴시키기</h3>
           <p className="section-desc danger-desc">
             이 학생의 계정을 삭제합니다. 삭제 후 동일한 아이디·비밀번호·이름으로
-            재가입할 수 있으며, 재가입 시 통장 잔액은 0원부터 시작합니다.
+            재가입할 수 있으며, 재가입 시 통장 잔액은 0피스부터 시작합니다.
           </p>
           <WithdrawForm
             username={dbUser.username}
@@ -158,7 +158,7 @@ export default async function AdminUserPage({
                     </td>
                     <td className="text-right">
                       {t.type === "deposit" ? "+" : "-"}
-                      {t.amount.toLocaleString("ko-KR")}원
+                      {t.amount.toLocaleString("ko-KR")}피스
                     </td>
                     <td>{t.description}</td>
                     <td>

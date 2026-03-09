@@ -3,6 +3,7 @@ import { redirect } from "next/navigation";
 import { getSessionUser } from "@/lib/auth";
 import { prisma } from "@/lib/db";
 import { setGlobalTaxAction } from "./setGlobalTaxAction";
+import { hasJobSpecialPage, JOB_TO_SLUG } from "@/lib/constants";
 
 export default async function DashboardPage() {
   const user = await getSessionUser();
@@ -36,7 +37,7 @@ export default async function DashboardPage() {
         <div className="card">
           <h2 className="section-title">우리 나라 세금 (관리자)</h2>
           <p className="amount">
-            {globalState.globalTax.toLocaleString("ko-KR")}원
+            {globalState.globalTax.toLocaleString("ko-KR")}피스
           </p>
           <form action={setGlobalTaxAction} className="form-inline">
             <label className="form-label-inline">
@@ -63,6 +64,16 @@ export default async function DashboardPage() {
           </form>
           <Link href="/tax-history" className="btn-secondary" >
             내역 보기
+          </Link>
+        </div>
+
+        <div className="card">
+          <h2 className="section-title">직업 요청 관리</h2>
+          <p className="section-desc">
+            국세청장·은행원·경찰서장 직업 사용자의 승인 요청을 처리합니다.
+          </p>
+          <Link href="/admin/requests" className="btn-primary">
+            요청 목록 보기
           </Link>
         </div>
 
@@ -98,7 +109,7 @@ export default async function DashboardPage() {
                     </td>
                     <td>{u.username}</td>
                     <td>{u.job ?? "—"}</td>
-                    <td>{u.balance.toLocaleString("ko-KR")}원</td>
+                    <td>{u.balance.toLocaleString("ko-KR")}피스</td>
                     <td>
                       <Link
                         href={`/admin/users/${u.username}`}
@@ -130,12 +141,14 @@ export default async function DashboardPage() {
     return acc + (t.type === "deposit" ? t.amount : -t.amount);
   }, 0);
 
+  const jobSlug = dbUser.job && hasJobSpecialPage(dbUser.job) ? JOB_TO_SLUG[dbUser.job] : null;
+
   return (
     <section className="grid-two">
       <div className="card">
         <h2 className="section-title">우리 나라 세금</h2>
         <p className="amount">
-          {globalState.globalTax.toLocaleString("ko-KR")}원
+          {globalState.globalTax.toLocaleString("ko-KR")}피스
         </p>
         <Link href="/tax-history" className="btn-secondary">
           내역 보기
@@ -143,7 +156,7 @@ export default async function DashboardPage() {
       </div>
       <div className="card">
         <h2 className="section-title">내 통장 잔액</h2>
-        <p className="amount">{balance.toLocaleString("ko-KR")}원</p>
+        <p className="amount">{balance.toLocaleString("ko-KR")}피스</p>
         <p className="section-desc">
           나에게만 해당되는 가상의 통장 잔액입니다. 입금/출금 내역은 관리자만
           수정할 수 있습니다.
@@ -152,6 +165,17 @@ export default async function DashboardPage() {
           거래내역 보기
         </Link>
       </div>
+      {jobSlug && dbUser.job && (
+        <div className="card">
+          <h2 className="section-title">{dbUser.job}</h2>
+          <p className="section-desc">
+            직업 전용 기능을 사용할 수 있습니다.
+          </p>
+          <Link href={`/job/${jobSlug}`} className="btn-primary">
+            {dbUser.job} 메뉴로 이동
+          </Link>
+        </div>
+      )}
     </section>
   );
 }

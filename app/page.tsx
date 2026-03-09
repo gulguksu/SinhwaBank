@@ -80,6 +80,9 @@ export default async function LoginPage() {
         <p className="auth-helper">
           아직 계정이 없다면? <Link href="/register">회원가입</Link>
         </p>
+        <p className="auth-helper">
+          <Link href="/forgot-password">비밀번호 찾기</Link>
+        </p>
       </div>
     </section>
   );

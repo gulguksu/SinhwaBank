@@ -30,7 +30,7 @@ export default async function TransactionsPage() {
 
       <div className="balance-box">
         <span>현재 잔액</span>
-        <strong>{balance.toLocaleString("ko-KR")}원</strong>
+        <strong>{balance.toLocaleString("ko-KR")}피스</strong>
       </div>
 
       {txs.length === 0 ? (
@@ -50,7 +50,7 @@ export default async function TransactionsPage() {
                 <td>{t.type === "deposit" ? "입금" : "출금"}</td>
                 <td className="text-right">
                   {t.type === "deposit" ? "+" : "-"}
-                  {t.amount.toLocaleString("ko-KR")}원
+                  {t.amount.toLocaleString("ko-KR")}피스
                 </td>
                 <td>{t.description}</td>
               </tr>

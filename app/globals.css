@@ -301,6 +301,15 @@ select:focus {
   border-bottom: none;
 }
 
+.admin-requests-block {
+  margin-bottom: 1.5rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid #e5e7eb;
+}
+.admin-requests-block:last-child {
+  border-bottom: none;
+}
+
 .form-job .form-label-inline {
   margin-right: 0.5rem;
 }
