@@ -16,78 +16,6 @@
         "app/dashboard/page": "rsc"
       }
     },
-    "9b31ded7fd8ec5f532bd07ba853b52919f0f376c": {
-      "workers": {
-        "app/register/page": "(rsc)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22C%3A%5C%5CUsers%5C%5CMJH%5C%5CDesktop%5C%5Ccodingstudy%5C%5Cmoney%5C%5Cbank-next%5C%5Capp%5C%5Cregister%5C%5Cpage.tsx%22%2C%5B%22%24%24ACTION_0%22%5D%5D%5D&__client_imported__=!"
-      },
-      "layer": {
-        "app/register/page": "rsc"
-      }
-    },
-    "61a69fed91b67ff554e3caf4be25508898e49aa5": {
-      "workers": {
-        "app/admin/users/[username]/page": "(rsc)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22C%3A%5C%5CUsers%5C%5CMJH%5C%5CDesktop%5C%5Ccodingstudy%5C%5Cmoney%5C%5Cbank-next%5C%5Capp%5C%5Cadmin%5C%5Cusers%5C%5C%5Busername%5D%5C%5CtxActions.ts%22%2C%5B%22deleteTransactionAction%22%2C%22updateJobAction%22%2C%22editTransactionAction%22%2C%22addTransactionAction%22%2C%22withdrawUserAction%22%5D%5D%5D&__client_imported__=!"
-      },
-      "layer": {
-        "app/admin/users/[username]/page": "rsc"
-      }
-    },
-    "92721cd7688621456b3308bc058334169cdd23bc": {
-      "workers": {
-        "app/admin/users/[username]/page": "(rsc)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22C%3A%5C%5CUsers%5C%5CMJH%5C%5CDesktop%5C%5Ccodingstudy%5C%5Cmoney%5C%5Cbank-next%5C%5Capp%5C%5Cadmin%5C%5Cusers%5C%5C%5Busername%5D%5C%5CtxActions.ts%22%2C%5B%22deleteTransactionAction%22%2C%22updateJobAction%22%2C%22editTransactionAction%22%2C%22addTransactionAction%22%2C%22withdrawUserAction%22%5D%5D%5D&__client_imported__=!"
-      },
-      "layer": {
-        "app/admin/users/[username]/page": "rsc"
-      }
-    },
-    "9fedf05102f71ba4a6d8cfa3021832cbbfa39271": {
-      "workers": {
-        "app/admin/users/[username]/page": "(rsc)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22C%3A%5C%5CUsers%5C%5CMJH%5C%5CDesktop%5C%5Ccodingstudy%5C%5Cmoney%5C%5Cbank-next%5C%5Capp%5C%5Cadmin%5C%5Cusers%5C%5C%5Busername%5D%5C%5CtxActions.ts%22%2C%5B%22deleteTransactionAction%22%2C%22updateJobAction%22%2C%22editTransactionAction%22%2C%22addTransactionAction%22%2C%22withdrawUserAction%22%5D%5D%5D&__client_imported__=!"
-      },
-      "layer": {
-        "app/admin/users/[username]/page": "rsc"
-      }
-    },
-    "c6dbb22bdbfc49ea2c10c318ca0fbae290ac7076": {
-      "workers": {
-        "app/admin/users/[username]/page": "(rsc)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22C%3A%5C%5CUsers%5C%5CMJH%5C%5CDesktop%5C%5Ccodingstudy%5C%5Cmoney%5C%5Cbank-next%5C%5Capp%5C%5Cadmin%5C%5Cusers%5C%5C%5Busername%5D%5C%5CtxActions.ts%22%2C%5B%22deleteTransactionAction%22%2C%22updateJobAction%22%2C%22editTransactionAction%22%2C%22addTransactionAction%22%2C%22withdrawUserAction%22%5D%5D%5D&__client_imported__=!"
-      },
-      "layer": {
-        "app/admin/users/[username]/page": "rsc"
-      }
-    },
-    "c8d0f8df8076b88b288c94abd51c8fc73aed8c61": {
-      "workers": {
-        "app/admin/users/[username]/page": "(rsc)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22C%3A%5C%5CUsers%5C%5CMJH%5C%5CDesktop%5C%5Ccodingstudy%5C%5Cmoney%5C%5Cbank-next%5C%5Capp%5C%5Cadmin%5C%5Cusers%5C%5C%5Busername%5D%5C%5CtxActions.ts%22%2C%5B%22deleteTransactionAction%22%2C%22updateJobAction%22%2C%22editTransactionAction%22%2C%22addTransactionAction%22%2C%22withdrawUserAction%22%5D%5D%5D&__client_imported__=!"
-      },
-      "layer": {
-        "app/admin/users/[username]/page": "rsc"
-      }
-    },
-    "d0f57ed263a37ac5719ad4f503e58f484cd5a0c1": {
-      "workers": {
-        "app/job/[slug]/page": "(rsc)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22C%3A%5C%5CUsers%5C%5CMJH%5C%5CDesktop%5C%5Ccodingstudy%5C%5Cmoney%5C%5Cbank-next%5C%5Capp%5C%5Cjob%5C%5C%5Bslug%5D%5C%5Cactions.ts%22%2C%5B%22deleteTaxChangeRequest%22%2C%22cancelTaxChangeRequest%22%2C%22cancelBankPaymentRequest%22%2C%22deletePoliceFineRequest%22%2C%22submitTaxChangeByDeltaRequest%22%2C%22deleteBankPaymentRequest%22%2C%22cancelPoliceFineRequest%22%2C%22submitPoliceFineRequest%22%2C%22submitBankPaymentRequest%22%5D%5D%5D&__client_imported__=!"
-      },
-      "layer": {
-        "app/job/[slug]/page": "rsc"
-      }
-    },
-    "e3a5051b4b2814596fbc282abd986e05e05035d0": {
-      "workers": {
-        "app/job/[slug]/page": "(rsc)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22C%3A%5C%5CUsers%5C%5CMJH%5C%5CDesktop%5C%5Ccodingstudy%5C%5Cmoney%5C%5Cbank-next%5C%5Capp%5C%5Cjob%5C%5C%5Bslug%5D%5C%5Cactions.ts%22%2C%5B%22deleteTaxChangeRequest%22%2C%22cancelTaxChangeRequest%22%2C%22cancelBankPaymentRequest%22%2C%22deletePoliceFineRequest%22%2C%22submitTaxChangeByDeltaRequest%22%2C%22deleteBankPaymentRequest%22%2C%22cancelPoliceFineRequest%22%2C%22submitPoliceFineRequest%22%2C%22submitBankPaymentRequest%22%5D%5D%5D&__client_imported__=!"
-      },
-      "layer": {
-        "app/job/[slug]/page": "rsc"
-      }
-    },
-    "f9650a3b27de8b4de26420b20d9376202671fd67": {
-      "workers": {
-        "app/job/[slug]/page": "(rsc)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22C%3A%5C%5CUsers%5C%5CMJH%5C%5CDesktop%5C%5Ccodingstudy%5C%5Cmoney%5C%5Cbank-next%5C%5Capp%5C%5Cjob%5C%5C%5Bslug%5D%5C%5Cactions.ts%22%2C%5B%22deleteTaxChangeRequest%22%2C%22cancelTaxChangeRequest%22%2C%22cancelBankPaymentRequest%22%2C%22deletePoliceFineRequest%22%2C%22submitTaxChangeByDeltaRequest%22%2C%22deleteBankPaymentRequest%22%2C%22cancelPoliceFineRequest%22%2C%22submitPoliceFineRequest%22%2C%22submitBankPaymentRequest%22%5D%5D%5D&__client_imported__=!"
-      },
-      "layer": {
-        "app/job/[slug]/page": "rsc"
-      }
-    },
     "0446ca84dac26c9befc4ab34ca2f96b8e0bbf2da": {
       "workers": {
         "app/admin/requests/page": "(rsc)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22C%3A%5C%5CUsers%5C%5CMJH%5C%5CDesktop%5C%5Ccodingstudy%5C%5Cmoney%5C%5Cbank-next%5C%5Capp%5C%5Cadmin%5C%5Crequests%5C%5Cactions.ts%22%2C%5B%22approveBankPaymentRequest%22%2C%22approveTaxChangeRequest%22%2C%22rejectPoliceFineRequest%22%2C%22rejectBankPaymentRequest%22%2C%22approvePoliceFineRequest%22%2C%22rejectTaxChangeRequest%22%5D%5D%5D&__client_imported__=!"
@@ -136,63 +64,39 @@
         "app/admin/requests/page": "rsc"
       }
     },
-    "2fa27e6e6ec1cd5223cee7ef3d9c3995ec621ae4": {
+    "058c07da5ec5094a97f8ce168b4ed8b8cdabfeb1": {
       "workers": {
-        "app/job/[slug]/page": "(rsc)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22C%3A%5C%5CUsers%5C%5CMJH%5C%5CDesktop%5C%5Ccodingstudy%5C%5Cmoney%5C%5Cbank-next%5C%5Capp%5C%5Cjob%5C%5C%5Bslug%5D%5C%5Cactions.ts%22%2C%5B%22deleteTaxChangeRequest%22%2C%22cancelTaxChangeRequest%22%2C%22cancelBankPaymentRequest%22%2C%22deletePoliceFineRequest%22%2C%22submitTaxChangeByDeltaRequest%22%2C%22deleteBankPaymentRequest%22%2C%22cancelPoliceFineRequest%22%2C%22submitPoliceFineRequest%22%2C%22submitBankPaymentRequest%22%5D%5D%5D&__client_imported__=!"
+        "app/shop/page": "(rsc)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22C%3A%5C%5CUsers%5C%5CMJH%5C%5CDesktop%5C%5Ccodingstudy%5C%5Cmoney%5C%5Cbank-next%5C%5Capp%5C%5Cshop%5C%5Cactions.ts%22%2C%5B%22deleteShopItemAction%22%2C%22editShopItemAction%22%2C%22purchaseAction%22%2C%22addShopItemAction%22%5D%5D%5D&__client_imported__=!"
       },
       "layer": {
-        "app/job/[slug]/page": "rsc"
+        "app/shop/page": "rsc"
       }
     },
-    "5614205815172e92f468b3ba3569cdb8c77143b9": {
+    "5d3cb7d9d87ac59a4424abb93d5fb6ab02b52386": {
       "workers": {
-        "app/job/[slug]/page": "(rsc)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22C%3A%5C%5CUsers%5C%5CMJH%5C%5CDesktop%5C%5Ccodingstudy%5C%5Cmoney%5C%5Cbank-next%5C%5Capp%5C%5Cjob%5C%5C%5Bslug%5D%5C%5Cactions.ts%22%2C%5B%22deleteTaxChangeRequest%22%2C%22cancelTaxChangeRequest%22%2C%22cancelBankPaymentRequest%22%2C%22deletePoliceFineRequest%22%2C%22submitTaxChangeByDeltaRequest%22%2C%22deleteBankPaymentRequest%22%2C%22cancelPoliceFineRequest%22%2C%22submitPoliceFineRequest%22%2C%22submitBankPaymentRequest%22%5D%5D%5D&__client_imported__=!"
+        "app/shop/page": "(rsc)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22C%3A%5C%5CUsers%5C%5CMJH%5C%5CDesktop%5C%5Ccodingstudy%5C%5Cmoney%5C%5Cbank-next%5C%5Capp%5C%5Cshop%5C%5Cactions.ts%22%2C%5B%22deleteShopItemAction%22%2C%22editShopItemAction%22%2C%22purchaseAction%22%2C%22addShopItemAction%22%5D%5D%5D&__client_imported__=!"
       },
       "layer": {
-        "app/job/[slug]/page": "rsc"
+        "app/shop/page": "rsc"
       }
     },
-    "d6241a7104735b224342532e19bc5f13401d8b5d": {
+    "739d9cd5a2922a5c1cf6b2ea62d11bfa1102769c": {
       "workers": {
-        "app/job/[slug]/page": "(rsc)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22C%3A%5C%5CUsers%5C%5CMJH%5C%5CDesktop%5C%5Ccodingstudy%5C%5Cmoney%5C%5Cbank-next%5C%5Capp%5C%5Cjob%5C%5C%5Bslug%5D%5C%5Cactions.ts%22%2C%5B%22deleteTaxChangeRequest%22%2C%22cancelTaxChangeRequest%22%2C%22cancelBankPaymentRequest%22%2C%22deletePoliceFineRequest%22%2C%22submitTaxChangeByDeltaRequest%22%2C%22deleteBankPaymentRequest%22%2C%22cancelPoliceFineRequest%22%2C%22submitPoliceFineRequest%22%2C%22submitBankPaymentRequest%22%5D%5D%5D&__client_imported__=!"
+        "app/shop/page": "(rsc)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22C%3A%5C%5CUsers%5C%5CMJH%5C%5CDesktop%5C%5Ccodingstudy%5C%5Cmoney%5C%5Cbank-next%5C%5Capp%5C%5Cshop%5C%5Cactions.ts%22%2C%5B%22deleteShopItemAction%22%2C%22editShopItemAction%22%2C%22purchaseAction%22%2C%22addShopItemAction%22%5D%5D%5D&__client_imported__=!"
       },
       "layer": {
-        "app/job/[slug]/page": "rsc"
+        "app/shop/page": "rsc"
       }
     },
-    "223f0d94747a1c3b46a55c5e9ec9b9463442ef55": {
+    "8a5e41e16ed5da30369252dd173b6d29a4ff4de5": {
       "workers": {
-        "app/job/[slug]/page": "(rsc)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22C%3A%5C%5CUsers%5C%5CMJH%5C%5CDesktop%5C%5Ccodingstudy%5C%5Cmoney%5C%5Cbank-next%5C%5Capp%5C%5Cjob%5C%5C%5Bslug%5D%5C%5Cactions.ts%22%2C%5B%22deleteTaxChangeRequest%22%2C%22cancelTaxChangeRequest%22%2C%22cancelBankPaymentRequest%22%2C%22deletePoliceFineRequest%22%2C%22submitTaxChangeByDeltaRequest%22%2C%22deleteBankPaymentRequest%22%2C%22cancelPoliceFineRequest%22%2C%22submitPoliceFineRequest%22%2C%22submitBankPaymentRequest%22%5D%5D%5D&__client_imported__=!"
+        "app/shop/page": "(rsc)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22C%3A%5C%5CUsers%5C%5CMJH%5C%5CDesktop%5C%5Ccodingstudy%5C%5Cmoney%5C%5Cbank-next%5C%5Capp%5C%5Cshop%5C%5Cactions.ts%22%2C%5B%22deleteShopItemAction%22%2C%22editShopItemAction%22%2C%22purchaseAction%22%2C%22addShopItemAction%22%5D%5D%5D&__client_imported__=!"
       },
       "layer": {
-        "app/job/[slug]/page": "rsc"
-      }
-    },
-    "7e627d000dcb2a70c737031dded325e89cf5c207": {
-      "workers": {
-        "app/job/[slug]/page": "(rsc)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22C%3A%5C%5CUsers%5C%5CMJH%5C%5CDesktop%5C%5Ccodingstudy%5C%5Cmoney%5C%5Cbank-next%5C%5Capp%5C%5Cjob%5C%5C%5Bslug%5D%5C%5Cactions.ts%22%2C%5B%22deleteTaxChangeRequest%22%2C%22cancelTaxChangeRequest%22%2C%22cancelBankPaymentRequest%22%2C%22deletePoliceFineRequest%22%2C%22submitTaxChangeByDeltaRequest%22%2C%22deleteBankPaymentRequest%22%2C%22cancelPoliceFineRequest%22%2C%22submitPoliceFineRequest%22%2C%22submitBankPaymentRequest%22%5D%5D%5D&__client_imported__=!"
-      },
-      "layer": {
-        "app/job/[slug]/page": "rsc"
-      }
-    },
-    "cd6a47bb273dfe04b692334a6e4ba6664878b63c": {
-      "workers": {
-        "app/job/[slug]/page": "(rsc)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22C%3A%5C%5CUsers%5C%5CMJH%5C%5CDesktop%5C%5Ccodingstudy%5C%5Cmoney%5C%5Cbank-next%5C%5Capp%5C%5Cjob%5C%5C%5Bslug%5D%5C%5Cactions.ts%22%2C%5B%22deleteTaxChangeRequest%22%2C%22cancelTaxChangeRequest%22%2C%22cancelBankPaymentRequest%22%2C%22deletePoliceFineRequest%22%2C%22submitTaxChangeByDeltaRequest%22%2C%22deleteBankPaymentRequest%22%2C%22cancelPoliceFineRequest%22%2C%22submitPoliceFineRequest%22%2C%22submitBankPaymentRequest%22%5D%5D%5D&__client_imported__=!"
-      },
-      "layer": {
-        "app/job/[slug]/page": "rsc"
-      }
-    },
-    "91c06da2554f5135da547eff51258978d2484609": {
-      "workers": {
-        "app/job/[slug]/page": "(rsc)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22C%3A%5C%5CUsers%5C%5CMJH%5C%5CDesktop%5C%5Ccodingstudy%5C%5Cmoney%5C%5Cbank-next%5C%5Capp%5C%5Cjob%5C%5C%5Bslug%5D%5C%5Cactions.ts%22%2C%5B%22deleteTaxChangeRequest%22%2C%22cancelTaxChangeRequest%22%2C%22cancelBankPaymentRequest%22%2C%22deletePoliceFineRequest%22%2C%22submitTaxChangeByDeltaRequest%22%2C%22deleteBankPaymentRequest%22%2C%22cancelPoliceFineRequest%22%2C%22submitPoliceFineRequest%22%2C%22submitBankPaymentRequest%22%5D%5D%5D&__client_imported__=!"
-      },
-      "layer": {
-        "app/job/[slug]/page": "rsc"
+        "app/shop/page": "rsc"
       }
     }
   },
   "edge": {},
-  "encryptionKey": "1h4UTBrovWoa0LajmawGD3+HHoq0Y8/N05e/sqx0jZg="
+  "encryptionKey": "JZHwSQ/JGDm2yZL+BTd36X2hvBRjmmPdvwOZOjHfgBY="
 }

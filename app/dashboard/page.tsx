@@ -16,21 +16,17 @@ export default async function DashboardPage() {
     (await prisma.globalState.create({ data: { id: 1, globalTax: 0 } }));
 
   if (user.role === "admin") {
-    const users = await prisma.user.findMany({
+    const usersWithTxs = await prisma.user.findMany({
       orderBy: { id: "asc" },
+      include: { transactions: true },
     });
-
-    const withBalances = await Promise.all(
-      users.map(async (u) => {
-        const txs = await prisma.transaction.findMany({
-          where: { userId: u.id },
-        });
-        const balance = txs.reduce((acc, t) => {
-          return acc + (t.type === "deposit" ? t.amount : -t.amount);
-        }, 0);
-        return { ...u, balance };
-      })
-    );
+    const withBalances = usersWithTxs.map((u) => {
+      const balance = u.transactions.reduce((acc, t) => {
+        return acc + (t.type === "deposit" ? t.amount : -t.amount);
+      }, 0);
+      const { transactions: _, ...user } = u;
+      return { ...user, balance };
+    });
 
     return (
       <section className="grid-two">
@@ -74,6 +70,16 @@ export default async function DashboardPage() {
           </p>
           <Link href="/admin/requests" className="btn-primary">
             요청 목록 보기
+          </Link>
+        </div>
+
+        <div className="card">
+          <h2 className="section-title">상점 관리</h2>
+          <p className="section-desc">
+            상점 상품을 추가·수정·삭제할 수 있습니다.
+          </p>
+          <Link href="/shop" className="btn-primary">
+            상점으로 이동하기
           </Link>
         </div>
 
@@ -163,6 +169,15 @@ export default async function DashboardPage() {
         </p>
         <Link href="/transactions" className="btn-primary">
           거래내역 보기
+        </Link>
+      </div>
+      <div className="card">
+        <h2 className="section-title">상점</h2>
+        <p className="section-desc">
+          열심히 모은 피스를 사용해봅시다!
+        </p>
+        <Link href="/shop" className="btn-primary">
+          상점으로 이동하기
         </Link>
       </div>
       {jobSlug && dbUser.job && (

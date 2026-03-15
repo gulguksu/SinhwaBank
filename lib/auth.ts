@@ -1,3 +1,4 @@
+import { cache } from "react";
 import { cookies } from "next/headers";
 import crypto from "crypto";
 
@@ -15,7 +16,7 @@ export type SessionUser =
   | { role: "admin"; name: string }
   | { role: "user"; id: number; username: string; name: string; job?: string | null };
 
-export async function getSessionUser(): Promise<SessionUser | null> {
+async function getSessionUserImpl(): Promise<SessionUser | null> {
   const cookieStore = await cookies();
   const raw = cookieStore.get(COOKIE_NAME)?.value;
   if (!raw) return null;
@@ -48,6 +49,9 @@ export async function getSessionUser(): Promise<SessionUser | null> {
     return null;
   }
 }
+
+/** 요청당 한 번만 세션을 읽도록 캐시 (layout + page 중복 호출 방지) */
+export const getSessionUser = cache(getSessionUserImpl);
 
 export async function setSessionUser(user: SessionUser) {
   const cookieStore = await cookies();

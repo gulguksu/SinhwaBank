@@ -1,8 +1,8 @@
 {
-  "/_not-found/page": "app/_not-found/page.js",
-  "/page": "app/page.js",
-  "/job/[slug]/page": "app/job/[slug]/page.js",
-  "/tax-history/page": "app/tax-history/page.js",
   "/dashboard/page": "app/dashboard/page.js",
-  "/transactions/page": "app/transactions/page.js"
+  "/transactions/page": "app/transactions/page.js",
+  "/admin/requests/page": "app/admin/requests/page.js",
+  "/page": "app/page.js",
+  "/logout/route": "app/logout/route.js",
+  "/shop/page": "app/shop/page.js"
 }

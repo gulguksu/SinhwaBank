@@ -1,36 +1,36 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
 datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
 
-generator client {
-  provider = "prisma-client-js"
-}
-
 model User {
-  id                    Int                   @id @default(autoincrement())
-  username              String                @unique
-  passwordHash          String
-  passwordHint          String?               // 비밀번호 찾기 시 보여줄 힌트 (가입 시 입력)
-  name                  String
-  isAdmin               Boolean               @default(false)
-  job                   String?               // 직업: 국세청장, 은행원, 경찰서장, 낙농업자, 에너지지킴이, 청소업자, 날쌘돌이
-  transactions          Transaction[]
-  taxChangeRequests     TaxChangeRequest[]    @relation("TaxChangeRequestedBy")
-  bankPaymentRequests   BankPaymentRequest[]  @relation("BankPaymentRequestedBy")
-  bankPaymentTargets    BankPaymentRequest[]  @relation("BankPaymentTarget")
-  policeFineRequests    PoliceFineRequest[]   @relation("PoliceFineRequestedBy")
-  policeFineTargets     PoliceFineRequest[]   @relation("PoliceFineTarget")
+  id                  Int                  @id @default(autoincrement())
+  username            String               @unique
+  passwordHash        String
+  name                String
+  isAdmin             Boolean              @default(false)
+  job                 String?
+  passwordHint        String?
+  bankPaymentRequests BankPaymentRequest[] @relation("BankPaymentRequestedBy")
+  bankPaymentTargets  BankPaymentRequest[] @relation("BankPaymentTarget")
+  policeFineRequests  PoliceFineRequest[]  @relation("PoliceFineRequestedBy")
+  policeFineTargets   PoliceFineRequest[]  @relation("PoliceFineTarget")
+  taxChangeRequests   TaxChangeRequest[]   @relation("TaxChangeRequestedBy")
+  transactions        Transaction[]
 }
 
 model Transaction {
   id          Int      @id @default(autoincrement())
-  user        User     @relation(fields: [userId], references: [id])
   userId      Int
-  type        String   // "deposit" or "withdraw"
+  type        String
   amount      Int
   description String
   createdAt   DateTime @default(now())
+  user        User     @relation(fields: [userId], references: [id])
 }
 
 model GlobalState {
@@ -47,41 +47,44 @@ model TaxHistory {
   createdAt    DateTime @default(now())
 }
 
-// 국세청장: 세금 조정 승인 요청
 model TaxChangeRequest {
-  id              Int      @id @default(autoincrement())
-  requestedBy      User     @relation("TaxChangeRequestedBy", fields: [requestedById], references: [id])
-  requestedById   Int
-  newAmount       Int      // 조정 후 세금 금액
-  description     String   // 변동 내역
-  status          String   @default("pending") // pending, approved, rejected
-  createdAt       DateTime @default(now())
+  id            Int      @id @default(autoincrement())
+  requestedById Int
+  newAmount     Int
+  description   String
+  status        String   @default("pending")
+  createdAt     DateTime @default(now())
+  requestedBy   User     @relation("TaxChangeRequestedBy", fields: [requestedById], references: [id])
 }
 
-// 은행원: 통장 지급 승인 요청 (월급/예금 만기/예금 중도 포기금)
 model BankPaymentRequest {
-  id              Int      @id @default(autoincrement())
-  requestedBy     User     @relation("BankPaymentRequestedBy", fields: [requestedById], references: [id])
-  requestedById   Int
-  target          User     @relation("BankPaymentTarget", fields: [targetUserId], references: [id])
-  targetUserId   Int
-  amount          Int
-  description     String   // 월급 | 예금 만기 | 예금 중도 포기금
-  status          String   @default("pending")
-  createdAt       DateTime @default(now())
+  id            Int      @id @default(autoincrement())
+  requestedById Int
+  targetUserId  Int
+  amount        Int
+  description   String
+  status        String   @default("pending")
+  createdAt     DateTime @default(now())
+  requestedBy   User     @relation("BankPaymentRequestedBy", fields: [requestedById], references: [id])
+  target        User     @relation("BankPaymentTarget", fields: [targetUserId], references: [id])
 }
 
-// 경찰서장: 벌금 징수 승인 요청 (대상 통장 출금 + 세금 증가)
 model PoliceFineRequest {
   id              Int      @id @default(autoincrement())
-  requestedBy     User     @relation("PoliceFineRequestedBy", fields: [requestedById], references: [id])
   requestedById   Int
-  target          User     @relation("PoliceFineTarget", fields: [targetUserId], references: [id])
   targetUserId   Int
   amount          Int
-  violationDetail String  // [임의 입력] 위반 벌금 에서의 임의 입력 내용
+  violationDetail String
   status          String   @default("pending")
   createdAt       DateTime @default(now())
+  requestedBy     User     @relation("PoliceFineRequestedBy", fields: [requestedById], references: [id])
+  target          User     @relation("PoliceFineTarget", fields: [targetUserId], references: [id])
 }
 
-
+model ShopItem {
+  id    Int    @id @default(autoincrement())
+  name  String
+  price Int
+  stock Int    @default(0)
+  order Int    @default(0)
+}
