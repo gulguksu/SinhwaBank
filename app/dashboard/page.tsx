@@ -152,9 +152,12 @@ export default async function DashboardPage() {
   return (
     <section className="grid-two">
       <div className="card">
-        <h2 className="section-title">우리 나라 세금</h2>
+        <h2 className="section-title">최신국 세금</h2>
         <p className="amount">
           {globalState.globalTax.toLocaleString("ko-KR")}피스
+        </p>
+        <p className="section-desc">
+          우리 최신국의 현재 세금입니다.
         </p>
         <Link href="/tax-history" className="btn-secondary">
           내역 보기
@@ -164,8 +167,7 @@ export default async function DashboardPage() {
         <h2 className="section-title">내 통장 잔액</h2>
         <p className="amount">{balance.toLocaleString("ko-KR")}피스</p>
         <p className="section-desc">
-          나에게만 해당되는 가상의 통장 잔액입니다. 입금/출금 내역은 관리자만
-          수정할 수 있습니다.
+          내 통장에서 피스가 어떻게 들어오고 나갔는지 확인해봅시다.
         </p>
         <Link href="/transactions" className="btn-primary">
           거래내역 보기
