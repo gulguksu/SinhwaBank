@@ -5,6 +5,10 @@ import { getSessionUser } from "@/lib/auth";
 import { redirect } from "next/navigation";
 import { JOB_TO_SLUG, BANK_PAYMENT_DESCRIPTIONS } from "@/lib/constants";
 
+function calcDepositMaturityAmount(principal: number, interestRate: number): number {
+  return Math.floor(principal * (1 + interestRate / 100));
+}
+
 /** 국세청장: 세금 증감(더하기/빼기)으로 조정 요청 제출 */
 export async function submitTaxChangeByDeltaRequest(formData: FormData) {
   const user = await getSessionUser();
@@ -191,4 +195,53 @@ export async function deletePoliceFineRequest(requestId: number) {
   }
   await prisma.policeFineRequest.delete({ where: { id: requestId } });
   redirect("/job/police");
+}
+
+/** 은행원: 예금 지급 요청 처리 (수령하기 / 중도 포기) */
+export async function completeDepositPayout(requestId: number) {
+  const user = await getSessionUser();
+  if (!user || user.role !== "user") redirect("/");
+  const dbUser = await prisma.user.findUnique({ where: { id: user.id } });
+  if (!dbUser || dbUser.job !== "은행원") redirect("/dashboard");
+
+  const req = await prisma.depositPayoutRequest.findUnique({
+    where: { id: requestId },
+    include: {
+      subscription: {
+        include: { user: true },
+      },
+    },
+  });
+
+  if (!req || req.status !== "pending") {
+    redirect("/job/banker");
+  }
+
+  const sub = req.subscription;
+
+  const description =
+    req.kind === "maturity" ? "예금 만기" : "예금 중도 포기금";
+
+  await prisma.$transaction([
+    prisma.transaction.create({
+      data: {
+        userId: sub.userId,
+        type: "deposit",
+        amount: req.amount,
+        description,
+      },
+    }),
+    prisma.depositPayoutRequest.update({
+      where: { id: req.id },
+      data: { status: "approved" },
+    }),
+    prisma.depositSubscription.update({
+      where: { id: sub.id },
+      data: {
+        status: req.kind === "maturity" ? "paid" : "cancelled",
+      },
+    }),
+  ]);
+
+  redirect("/job/banker");
 }

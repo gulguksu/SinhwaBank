@@ -8,19 +8,21 @@ datasource db {
 }
 
 model User {
-  id                  Int                  @id @default(autoincrement())
-  username            String               @unique
-  passwordHash        String
-  name                String
-  isAdmin             Boolean              @default(false)
-  job                 String?
-  passwordHint        String?
-  bankPaymentRequests BankPaymentRequest[] @relation("BankPaymentRequestedBy")
-  bankPaymentTargets  BankPaymentRequest[] @relation("BankPaymentTarget")
-  policeFineRequests  PoliceFineRequest[]  @relation("PoliceFineRequestedBy")
-  policeFineTargets   PoliceFineRequest[]  @relation("PoliceFineTarget")
-  taxChangeRequests   TaxChangeRequest[]   @relation("TaxChangeRequestedBy")
-  transactions        Transaction[]
+  id                    Int                  @id @default(autoincrement())
+  username              String               @unique
+  passwordHash          String
+  name                  String
+  isAdmin               Boolean              @default(false)
+  job                   String?
+  passwordHint          String?
+  bankPaymentRequests   BankPaymentRequest[] @relation("BankPaymentRequestedBy")
+  bankPaymentTargets    BankPaymentRequest[] @relation("BankPaymentTarget")
+  policeFineRequests    PoliceFineRequest[]  @relation("PoliceFineRequestedBy")
+  policeFineTargets     PoliceFineRequest[]  @relation("PoliceFineTarget")
+  taxChangeRequests     TaxChangeRequest[]   @relation("TaxChangeRequestedBy")
+  transactions          Transaction[]
+  depositSubscriptions  DepositSubscription[]
+  depositPayoutRequests DepositPayoutRequest[] @relation("BankerDepositPayoutRequests")
 }
 
 model Transaction {
@@ -87,4 +89,40 @@ model ShopItem {
   price Int
   stock Int    @default(0)
   order Int    @default(0)
+}
+
+model DepositProduct {
+  id            Int                 @id @default(autoincrement())
+  name          String
+  interestRate  Int                 // 퍼센트 단위 (예: 5, 15, 40)
+  maturityWeeks Int                 // 만기 기간 (주 단위)
+  isActive      Boolean             @default(true)
+  order         Int                 @default(0)
+  subscriptions DepositSubscription[]
+}
+
+model DepositSubscription {
+  id            Int                 @id @default(autoincrement())
+  userId        Int
+  productId     Int
+  principal     Int                 // 원금
+  interestRate  Int                 // 가입 시점의 이자율
+  maturityWeeks Int                 // 가입 시점의 만기 기간(주)
+  startedAt     DateTime            @default(now())
+  status        String              @default("ongoing") // ongoing, waiting_payout, cancelled, paid
+  user          User                @relation(fields: [userId], references: [id])
+  product       DepositProduct      @relation(fields: [productId], references: [id])
+  payoutRequests DepositPayoutRequest[]
+}
+
+model DepositPayoutRequest {
+  id             Int                  @id @default(autoincrement())
+  bankerId       Int?
+  subscriptionId Int
+  amount         Int
+  kind           String               // maturity | early_cancel
+  status         String               @default("pending") // pending, approved
+  createdAt      DateTime             @default(now())
+  subscription   DepositSubscription  @relation(fields: [subscriptionId], references: [id])
+  banker         User?                @relation("BankerDepositPayoutRequests", fields: [bankerId], references: [id])
 }

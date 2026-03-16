@@ -28,7 +28,7 @@ export const SLUG_TO_JOB: Record<string, string> = {
 };
 
 /** 은행원 지급 내역 드롭다운 옵션 */
-export const BANK_PAYMENT_DESCRIPTIONS = ["월급", "예금 만기", "예금 중도 포기금"] as const;
+export const BANK_PAYMENT_DESCRIPTIONS = ["월급"] as const;
 
 export function isValidJob(value: string | null | undefined): value is JobType {
   if (!value) return false;

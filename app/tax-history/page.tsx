@@ -40,6 +40,7 @@ export default async function TaxHistoryPage() {
                   {h.createdAt.toLocaleString("ko-KR", {
                     dateStyle: "short",
                     timeStyle: "short",
+                    timeZone: "Asia/Seoul",
                   })}
                 </td>
                 <td>{h.amountBefore.toLocaleString("ko-KR")}피스</td>

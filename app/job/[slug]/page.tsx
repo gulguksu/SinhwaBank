@@ -13,6 +13,7 @@ import {
   deleteTaxChangeRequest,
   deleteBankPaymentRequest,
   deletePoliceFineRequest,
+  completeDepositPayout,
 } from "./actions";
 
 const VALID_SLUGS = ["tax-commissioner", "banker", "police"] as const;
@@ -100,6 +101,7 @@ export default async function JobPage({
                     {r.createdAt.toLocaleString("ko-KR", {
                       dateStyle: "short",
                       timeStyle: "short",
+                      timeZone: "Asia/Seoul",
                     })}
                   </td>
                   <td>{r.newAmount.toLocaleString("ko-KR")}피스</td>
@@ -146,6 +148,15 @@ export default async function JobPage({
     const requests = await prisma.bankPaymentRequest.findMany({
       where: { requestedById: user.id },
       include: { target: true },
+      orderBy: { createdAt: "desc" },
+    });
+    const receivedDepositRequests = await prisma.depositPayoutRequest.findMany({
+      where: { bankerId: user.id, status: "pending" },
+      include: {
+        subscription: {
+          include: { user: true },
+        },
+      },
       orderBy: { createdAt: "desc" },
     });
     return (
@@ -205,6 +216,7 @@ export default async function JobPage({
                     {r.createdAt.toLocaleString("ko-KR", {
                       dateStyle: "short",
                       timeStyle: "short",
+                      timeZone: "Asia/Seoul",
                     })}
                   </td>
                   <td>{r.target.name}</td>
@@ -231,6 +243,48 @@ export default async function JobPage({
                         </button>
                       </form>
                     )}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        )}
+        <h3 className="sub-title">내가 받은 요청 (예금)</h3>
+        {receivedDepositRequests.length === 0 ? (
+          <p>대기 중인 예금 지급 요청이 없습니다.</p>
+        ) : (
+          <table className="table">
+            <thead>
+              <tr>
+                <th>요청 일시</th>
+                <th>지급 대상</th>
+                <th>금액</th>
+                <th>구분</th>
+                <th>처리</th>
+              </tr>
+            </thead>
+            <tbody>
+              {receivedDepositRequests.map((r) => (
+                <tr key={r.id}>
+                  <td>
+                    {r.createdAt.toLocaleString("ko-KR", {
+                      dateStyle: "short",
+                      timeStyle: "short",
+                      timeZone: "Asia/Seoul",
+                    })}
+                  </td>
+                  <td>{r.subscription.user.name}</td>
+                  <td>{r.amount.toLocaleString("ko-KR")}피스</td>
+                  <td>{r.kind === "maturity" ? "예금 만기" : "예금 중도 포기"}</td>
+                  <td>
+                    <form
+                      action={completeDepositPayout.bind(null, r.id)}
+                      className="inline-form"
+                    >
+                      <button type="submit" className="btn-primary btn-small">
+                        송금하기
+                      </button>
+                    </form>
                   </td>
                 </tr>
               ))}
@@ -307,10 +361,11 @@ export default async function JobPage({
             {requests.map((r) => (
               <tr key={r.id}>
                 <td>
-                  {r.createdAt.toLocaleString("ko-KR", {
-                    dateStyle: "short",
-                    timeStyle: "short",
-                  })}
+                    {r.createdAt.toLocaleString("ko-KR", {
+                      dateStyle: "short",
+                      timeStyle: "short",
+                      timeZone: "Asia/Seoul",
+                    })}
                 </td>
                 <td>{r.target.name}</td>
                 <td>{r.amount.toLocaleString("ko-KR")}피스</td>

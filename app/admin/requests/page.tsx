@@ -68,6 +68,7 @@ export default async function AdminRequestsPage() {
                     {r.createdAt.toLocaleString("ko-KR", {
                       dateStyle: "short",
                       timeStyle: "short",
+                      timeZone: "Asia/Seoul",
                     })}
                   </td>
                   <td>{r.newAmount.toLocaleString("ko-KR")}피스</td>
@@ -124,6 +125,7 @@ export default async function AdminRequestsPage() {
                     {r.createdAt.toLocaleString("ko-KR", {
                       dateStyle: "short",
                       timeStyle: "short",
+                      timeZone: "Asia/Seoul",
                     })}
                   </td>
                   <td>
@@ -178,6 +180,7 @@ export default async function AdminRequestsPage() {
                     {r.createdAt.toLocaleString("ko-KR", {
                       dateStyle: "short",
                       timeStyle: "short",
+                      timeZone: "Asia/Seoul",
                     })}
                   </td>
                   <td>

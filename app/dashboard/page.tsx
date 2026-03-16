@@ -182,6 +182,15 @@ export default async function DashboardPage() {
           상점으로 이동하기
         </Link>
       </div>
+      <div className="card">
+        <h2 className="section-title">예금</h2>
+        <p className="section-desc">
+          열심히 모은 돈으로 예금 상품에 가입해보세요!
+        </p>
+        <Link href="/deposit" className="btn-primary">
+          은행으로 이동하기
+        </Link>
+      </div>
       {jobSlug && dbUser.job && (
         <div className="card">
           <h2 className="section-title">{dbUser.job}</h2>
