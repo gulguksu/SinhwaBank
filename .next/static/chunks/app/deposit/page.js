@@ -50,6 +50,7 @@ eval(__webpack_require__.ts("__webpack_require__.r(__webpack_exports__);\n/* har
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   addDepositProduct: function() { return /* binding */ addDepositProduct; },
+/* harmony export */   deleteDepositProduct: function() { return /* binding */ deleteDepositProduct; },
 /* harmony export */   editDepositProduct: function() { return /* binding */ editDepositProduct; },
 /* harmony export */   ensureDefaultDepositProducts: function() { return /* binding */ ensureDefaultDepositProducts; },
 /* harmony export */   requestEarlyCancel: function() { return /* binding */ requestEarlyCancel; },
@@ -66,11 +67,12 @@ function __build_action__(action, args) {
   return (0,next_dist_client_app_call_server__WEBPACK_IMPORTED_MODULE_0__.callServer)(action.$$id, args)
 }
 
-/* __next_internal_action_entry_do_not_use__ {"3bd8f0837d41f4bd47aed1a3f8f939bd430abddf":"ensureDefaultDepositProducts","52f1279ff4d1ab974bd9ad25d201208b8ffea419":"requestMaturityPayout","c05c065f260543907fb0add0dbed0844caf9b507":"subscribeDeposit","c575430e3b57e0b99ee0e094e974baa7fd88a54f":"requestEarlyCancel","ef5a57e7c0e2c2e92e8666daf1581ac6ac3b2d54":"editDepositProduct","fbcef232951adbbc4b65ad522ffc36d6e152ca34":"addDepositProduct"} */ var requestMaturityPayout = (0,private_next_rsc_action_client_wrapper__WEBPACK_IMPORTED_MODULE_1__.createServerReference)("52f1279ff4d1ab974bd9ad25d201208b8ffea419");
+/* __next_internal_action_entry_do_not_use__ {"3bd8f0837d41f4bd47aed1a3f8f939bd430abddf":"ensureDefaultDepositProducts","52f1279ff4d1ab974bd9ad25d201208b8ffea419":"requestMaturityPayout","58b81239efc547c2f902156c0159fa9ff88b8749":"deleteDepositProduct","c05c065f260543907fb0add0dbed0844caf9b507":"subscribeDeposit","c575430e3b57e0b99ee0e094e974baa7fd88a54f":"requestEarlyCancel","ef5a57e7c0e2c2e92e8666daf1581ac6ac3b2d54":"editDepositProduct","fbcef232951adbbc4b65ad522ffc36d6e152ca34":"addDepositProduct"} */ var requestMaturityPayout = (0,private_next_rsc_action_client_wrapper__WEBPACK_IMPORTED_MODULE_1__.createServerReference)("52f1279ff4d1ab974bd9ad25d201208b8ffea419");
 
 var ensureDefaultDepositProducts = (0,private_next_rsc_action_client_wrapper__WEBPACK_IMPORTED_MODULE_1__.createServerReference)("3bd8f0837d41f4bd47aed1a3f8f939bd430abddf");
 var addDepositProduct = (0,private_next_rsc_action_client_wrapper__WEBPACK_IMPORTED_MODULE_1__.createServerReference)("fbcef232951adbbc4b65ad522ffc36d6e152ca34");
 var editDepositProduct = (0,private_next_rsc_action_client_wrapper__WEBPACK_IMPORTED_MODULE_1__.createServerReference)("ef5a57e7c0e2c2e92e8666daf1581ac6ac3b2d54");
+var deleteDepositProduct = (0,private_next_rsc_action_client_wrapper__WEBPACK_IMPORTED_MODULE_1__.createServerReference)("58b81239efc547c2f902156c0159fa9ff88b8749");
 var subscribeDeposit = (0,private_next_rsc_action_client_wrapper__WEBPACK_IMPORTED_MODULE_1__.createServerReference)("c05c065f260543907fb0add0dbed0844caf9b507");
 var requestEarlyCancel = (0,private_next_rsc_action_client_wrapper__WEBPACK_IMPORTED_MODULE_1__.createServerReference)("c575430e3b57e0b99ee0e094e974baa7fd88a54f");
 

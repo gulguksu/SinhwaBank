@@ -1,10 +1,9 @@
 {
-  "/deposit/page": "app/deposit/page.js",
+  "/admin/requests/page": "app/admin/requests/page.js",
   "/page": "app/page.js",
-  "/tax-history/page": "app/tax-history/page.js",
-  "/shop/page": "app/shop/page.js",
   "/logout/route": "app/logout/route.js",
-  "/transactions/page": "app/transactions/page.js",
-  "/job/[slug]/page": "app/job/[slug]/page.js",
+  "/tax-history/page": "app/tax-history/page.js",
+  "/admin/users/[username]/page": "app/admin/users/[username]/page.js",
+  "/admin/reset/page": "app/admin/reset/page.js",
   "/dashboard/page": "app/dashboard/page.js"
 }

@@ -1,9 +1,9 @@
 {
   "pages": {
-    "/deposit/page": [
+    "/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/deposit/page.js"
+      "static/chunks/app/page.js"
     ],
     "/layout": [
       "static/chunks/webpack.js",
@@ -21,25 +21,35 @@
       "static/chunks/main-app.js",
       "static/chunks/app/dashboard/loading.js"
     ],
-    "/transactions/page": [
+    "/deposit/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/transactions/page.js"
+      "static/chunks/app/deposit/page.js"
     ],
-    "/transactions/loading": [
+    "/admin/users/[username]/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/transactions/loading.js"
+      "static/chunks/app/admin/users/[username]/page.js"
     ],
-    "/page": [
+    "/admin/users/[username]/loading": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/page.js"
+      "static/chunks/app/admin/users/[username]/loading.js"
     ],
-    "/job/[slug]/page": [
+    "/shop/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/job/[slug]/page.js"
+      "static/chunks/app/shop/page.js"
+    ],
+    "/shop/loading": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/shop/loading.js"
+    ],
+    "/admin/deposit/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/admin/deposit/page.js"
     ],
     "/tax-history/page": [
       "static/chunks/webpack.js",
@@ -51,15 +61,20 @@
       "static/chunks/main-app.js",
       "static/chunks/app/tax-history/loading.js"
     ],
-    "/shop/page": [
+    "/admin/requests/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/shop/page.js"
+      "static/chunks/app/admin/requests/page.js"
     ],
-    "/shop/loading": [
+    "/admin/requests/loading": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/shop/loading.js"
+      "static/chunks/app/admin/requests/loading.js"
+    ],
+    "/admin/reset/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/admin/reset/page.js"
     ]
   }
 }

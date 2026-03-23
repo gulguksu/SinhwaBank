@@ -84,6 +84,16 @@ export default async function DashboardPage() {
         </div>
 
         <div className="card">
+          <h2 className="section-title">예금 관리</h2>
+          <p className="section-desc">
+            예금 상품을 추가·수정·삭제하고 학생 예금 가입 현황을 확인합니다.
+          </p>
+          <Link href="/admin/deposit" className="btn-primary">
+            예금 관리 페이지로 이동
+          </Link>
+        </div>
+
+        <div className="card">
           <h2 className="section-title">학생 관리</h2>
           <p className="section-desc">
             학생 이름을 클릭하면 해당 학생의 탈퇴 처리, 직업 부여, 통장 거래내역
@@ -129,6 +139,17 @@ export default async function DashboardPage() {
               </tbody>
             </table>
           )}
+        </div>
+
+        <div className="card">
+          <h2 className="section-title">초기화</h2>
+          <p className="section-desc">
+            우리 나라 세금 내역, 학생 예금 가입 현황, 선택한 학생의 직업/통장 거래내역을
+            초기화할 수 있습니다.
+          </p>
+          <Link href="/admin/reset" className="btn-danger">
+            초기화 페이지로 이동
+          </Link>
         </div>
       </section>
     );

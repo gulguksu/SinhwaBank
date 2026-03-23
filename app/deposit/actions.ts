@@ -64,8 +64,8 @@ export async function addDepositProduct(formData: FormData) {
   const interestRate = parseInt(rateStr, 10);
   const maturityWeeks = parseInt(weeksStr, 10);
 
-  if (!name || isNaN(interestRate) || isNaN(maturityWeeks) || maturityWeeks <= 0) {
-    redirect("/deposit");
+  if (!name || isNaN(interestRate) || isNaN(maturityWeeks) || maturityWeeks < 0) {
+    redirect("/admin/deposit");
   }
 
   const maxOrder = await prisma.depositProduct.aggregate({
@@ -81,7 +81,7 @@ export async function addDepositProduct(formData: FormData) {
     },
   });
 
-  redirect("/deposit");
+  redirect("/admin/deposit");
 }
 
 export async function editDepositProduct(productId: number, formData: FormData) {
@@ -97,8 +97,8 @@ export async function editDepositProduct(productId: number, formData: FormData) 
   const maturityWeeks = parseInt(weeksStr, 10);
   const isActive = activeStr === "on" || activeStr === "true";
 
-  if (!name || isNaN(interestRate) || isNaN(maturityWeeks) || maturityWeeks <= 0) {
-    redirect("/deposit");
+  if (!name || isNaN(interestRate) || isNaN(maturityWeeks) || maturityWeeks < 0) {
+    redirect("/admin/deposit");
   }
 
   await prisma.depositProduct.update({
@@ -111,7 +111,29 @@ export async function editDepositProduct(productId: number, formData: FormData) 
     },
   });
 
-  redirect("/deposit");
+  redirect("/admin/deposit");
+}
+
+export async function deleteDepositProduct(productId: number) {
+  const user = await getSessionUser();
+  if (!user || user.role !== "admin") redirect("/");
+
+  const subscriptionCount = await prisma.depositSubscription.count({
+    where: { productId },
+  });
+
+  if (subscriptionCount > 0) {
+    await prisma.depositProduct.update({
+      where: { id: productId },
+      data: { isActive: false },
+    });
+  } else {
+    await prisma.depositProduct.delete({
+      where: { id: productId },
+    });
+  }
+
+  redirect("/admin/deposit");
 }
 
 export async function subscribeDeposit(formData: FormData) {
