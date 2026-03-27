@@ -22,3 +22,4 @@ export async function getPasswordHint(
   const hint = user.passwordHint ?? "(등록된 힌트가 없습니다.)";
   return { hint, error: null };
 }
+

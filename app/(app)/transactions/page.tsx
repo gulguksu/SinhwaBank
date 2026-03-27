@@ -2,6 +2,7 @@ import Link from "next/link";
 import { redirect } from "next/navigation";
 import { getSessionUser } from "@/lib/auth";
 import { prisma } from "@/lib/db";
+import { getUserBalance } from "@/lib/balance";
 
 export default async function TransactionsPage() {
   const user = await getSessionUser();
@@ -16,9 +17,7 @@ export default async function TransactionsPage() {
     where: { userId: user.id },
     orderBy: { createdAt: "asc" },
   });
-  const balance = txs.reduce((acc, t) => {
-    return acc + (t.type === "deposit" ? t.amount : -t.amount);
-  }, 0);
+  const balance = await getUserBalance(user.id);
 
   return (
     <section className="card">

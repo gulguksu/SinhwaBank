@@ -1,7 +1,7 @@
 import Link from "next/link";
 import bcrypt from "bcryptjs";
 import { redirect } from "next/navigation";
-import { getSessionUser, setSessionUser } from "@/lib/auth";
+import { setSessionUser } from "@/lib/auth";
 import { prisma } from "@/lib/db";
 
 const USERNAME_REGEX = /^[a-z0-9]+$/;
@@ -42,12 +42,7 @@ async function loginAction(formData: FormData) {
   redirect("/dashboard");
 }
 
-export default async function LoginPage() {
-  const user = await getSessionUser();
-  if (user) {
-    redirect("/dashboard");
-  }
-
+export default function LoginPage() {
   return (
     <section className="auth-wrapper">
       <div className="auth-card">
