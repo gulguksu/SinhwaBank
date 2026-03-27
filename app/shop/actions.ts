@@ -4,6 +4,7 @@ import { prisma } from "@/lib/db";
 import { getSessionUser } from "@/lib/auth";
 import { redirect } from "next/navigation";
 import { revalidatePath } from "next/cache";
+import { getUserBalance } from "@/lib/balance";
 
 /** 일반 사용자: 상품 구매 — 통장 출금 + 상품 잔고 감소 + 출금 내역 추가 */
 export async function purchaseAction(itemId: number, quantity: number) {
@@ -16,14 +17,7 @@ export async function purchaseAction(itemId: number, quantity: number) {
   if (quantity < 1 || quantity > item.stock) redirect("/shop");
 
   const totalCost = item.price * quantity;
-  const txs = await prisma.transaction.findMany({
-    where: { userId: session.id },
-    orderBy: { createdAt: "asc" },
-  });
-  const balance = txs.reduce(
-    (acc, t) => acc + (t.type === "deposit" ? t.amount : -t.amount),
-    0
-  );
+  const balance = await getUserBalance(session.id);
   if (balance < totalCost) redirect("/shop");
 
   const description = `${item.name} 상품 ${quantity}개 구매`;

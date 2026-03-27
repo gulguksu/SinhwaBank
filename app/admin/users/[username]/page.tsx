@@ -3,6 +3,7 @@ import { redirect } from "next/navigation";
 import { getSessionUser } from "@/lib/auth";
 import { prisma } from "@/lib/db";
 import { JOB_OPTIONS } from "@/lib/constants";
+import { getUserBalance } from "@/lib/balance";
 import {
   addTransactionAction,
   deleteTransactionAction,
@@ -47,9 +48,7 @@ export default async function AdminUserPage({
     skip,
     take: pageSize,
   });
-  const balance = txs.reduce((acc, t) => {
-    return acc + (t.type === "deposit" ? t.amount : -t.amount);
-  }, 0);
+  const balance = await getUserBalance(dbUser.id);
 
   return (
     <section className="grid-two">

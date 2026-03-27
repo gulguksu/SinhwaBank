@@ -4,6 +4,7 @@ import { getSessionUser } from "@/lib/auth";
 import { prisma } from "@/lib/db";
 import { setGlobalTaxAction } from "./setGlobalTaxAction";
 import { hasJobSpecialPage, JOB_TO_SLUG } from "@/lib/constants";
+import { getBalancesByUserIds, getUserBalance } from "@/lib/balance";
 
 export default async function DashboardPage() {
   const user = await getSessionUser();
@@ -16,16 +17,18 @@ export default async function DashboardPage() {
     (await prisma.globalState.create({ data: { id: 1, globalTax: 0 } }));
 
   if (user.role === "admin") {
-    const usersWithTxs = await prisma.user.findMany({
+    const users = await prisma.user.findMany({
       orderBy: { id: "asc" },
-      include: { transactions: true },
+      select: {
+        id: true,
+        username: true,
+        name: true,
+        job: true,
+      },
     });
-    const withBalances = usersWithTxs.map((u) => {
-      const balance = u.transactions.reduce((acc, t) => {
-        return acc + (t.type === "deposit" ? t.amount : -t.amount);
-      }, 0);
-      const { transactions: _, ...user } = u;
-      return { ...user, balance };
+    const balances = await getBalancesByUserIds(users.map((u) => u.id));
+    const withBalances = users.map((u) => {
+      return { ...u, balance: balances.get(u.id) ?? 0 };
     });
 
     return (
@@ -160,13 +163,7 @@ export default async function DashboardPage() {
   if (!dbUser) {
     redirect("/");
   }
-  const txs = await prisma.transaction.findMany({
-    where: { userId: dbUser.id },
-    orderBy: { createdAt: "asc" },
-  });
-  const balance = txs.reduce((acc, t) => {
-    return acc + (t.type === "deposit" ? t.amount : -t.amount);
-  }, 0);
+  const balance = await getUserBalance(dbUser.id);
 
   const jobSlug = dbUser.job && hasJobSpecialPage(dbUser.job) ? JOB_TO_SLUG[dbUser.job] : null;
 

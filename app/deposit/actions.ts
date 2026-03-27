@@ -3,6 +3,7 @@
 import { prisma } from "@/lib/db";
 import { getSessionUser } from "@/lib/auth";
 import { redirect } from "next/navigation";
+import { getUserBalance } from "@/lib/balance";
 
 function calcMaturityAmount(principal: number, interestRate: number): number {
   return Math.floor(principal * (1 + interestRate / 100));
@@ -171,14 +172,7 @@ export async function subscribeDeposit(formData: FormData) {
   }
 
   // 통장 잔액 확인
-  const txs = await prisma.transaction.findMany({
-    where: { userId: dbUser.id },
-    orderBy: { createdAt: "asc" },
-  });
-  const balance = txs.reduce(
-    (acc, t) => acc + (t.type === "deposit" ? t.amount : -t.amount),
-    0
-  );
+  const balance = await getUserBalance(dbUser.id);
   if (principal > balance) {
     redirect("/deposit");
   }

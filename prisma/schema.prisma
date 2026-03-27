@@ -33,6 +33,9 @@ model Transaction {
   description String
   createdAt   DateTime @default(now())
   user        User     @relation(fields: [userId], references: [id])
+
+  @@index([userId, createdAt])
+  @@index([userId, type])
 }
 
 model GlobalState {
@@ -57,6 +60,9 @@ model TaxChangeRequest {
   status        String   @default("pending")
   createdAt     DateTime @default(now())
   requestedBy   User     @relation("TaxChangeRequestedBy", fields: [requestedById], references: [id])
+
+  @@index([requestedById])
+  @@index([status, createdAt])
 }
 
 model BankPaymentRequest {
@@ -69,6 +75,10 @@ model BankPaymentRequest {
   createdAt     DateTime @default(now())
   requestedBy   User     @relation("BankPaymentRequestedBy", fields: [requestedById], references: [id])
   target        User     @relation("BankPaymentTarget", fields: [targetUserId], references: [id])
+
+  @@index([requestedById])
+  @@index([targetUserId])
+  @@index([status, createdAt])
 }
 
 model PoliceFineRequest {
@@ -81,6 +91,10 @@ model PoliceFineRequest {
   createdAt       DateTime @default(now())
   requestedBy     User     @relation("PoliceFineRequestedBy", fields: [requestedById], references: [id])
   target          User     @relation("PoliceFineTarget", fields: [targetUserId], references: [id])
+
+  @@index([requestedById])
+  @@index([targetUserId])
+  @@index([status, createdAt])
 }
 
 model ShopItem {
@@ -113,6 +127,10 @@ model DepositSubscription {
   user          User                @relation(fields: [userId], references: [id])
   product       DepositProduct      @relation(fields: [productId], references: [id])
   payoutRequests DepositPayoutRequest[]
+
+  @@index([userId])
+  @@index([productId])
+  @@index([userId, status, startedAt])
 }
 
 model DepositPayoutRequest {
@@ -125,4 +143,8 @@ model DepositPayoutRequest {
   createdAt      DateTime             @default(now())
   subscription   DepositSubscription  @relation(fields: [subscriptionId], references: [id])
   banker         User?                @relation("BankerDepositPayoutRequests", fields: [bankerId], references: [id])
+
+  @@index([bankerId])
+  @@index([subscriptionId])
+  @@index([status, createdAt])
 }

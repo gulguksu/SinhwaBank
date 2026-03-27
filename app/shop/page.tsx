@@ -3,6 +3,7 @@ import { redirect } from "next/navigation";
 import { getSessionUser } from "@/lib/auth";
 import { prisma } from "@/lib/db";
 import { ensureDefaultShopItems } from "@/lib/shop";
+import { getUserBalance } from "@/lib/balance";
 import {
   addShopItemAction,
   editShopItemAction,
@@ -22,14 +23,7 @@ export default async function ShopPage() {
 
   let balance: number | null = null;
   if (user.role === "user") {
-    const txs = await prisma.transaction.findMany({
-      where: { userId: user.id },
-      orderBy: { createdAt: "asc" },
-    });
-    balance = txs.reduce(
-      (acc, t) => acc + (t.type === "deposit" ? t.amount : -t.amount),
-      0
-    );
+    balance = await getUserBalance(user.id);
   }
 
   const isAdmin = user.role === "admin";

@@ -1,9 +1,0 @@
-{
-  "/admin/requests/page": "app/admin/requests/page.js",
-  "/page": "app/page.js",
-  "/logout/route": "app/logout/route.js",
-  "/tax-history/page": "app/tax-history/page.js",
-  "/admin/users/[username]/page": "app/admin/users/[username]/page.js",
-  "/admin/reset/page": "app/admin/reset/page.js",
-  "/dashboard/page": "app/dashboard/page.js"
-}
